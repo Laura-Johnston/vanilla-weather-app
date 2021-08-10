@@ -1,9 +1,17 @@
 .container{
     margin-top: 20px;
+   
     max-width:600px;
     border: 2px solid #dadee1;
     border-radius: 18px;
     padding: 15px;
+
+}
+.wrapper{
+    margin-left: 50px;
+    height: 100%;    
+    max-width:600px;
+
 }
 
 li{
@@ -20,25 +28,33 @@ ul{
     margin:0;
     padding: 0;
 }
-
-.aside-left h5{
-    margin-left: 80px;
+small{
     margin-top: -50px;
+    font-size: 16px;
+}
+
+.aside-left strong{
+ 
+    font-size: 38px;
    
-    
+}
+
+#weather-description{
+    text-transform: capitalize;
+}
 
 
+.aside-left{
+    margin-right: 200px; 
+    line-height: 40px;
+   
 }
 
 .aside-right{
     margin-left: 300px;
     margin-top: -80px;
+height: fit-content;
+margin-bottom: 30px;
 
-
-
-}
-#open-sourced-by{
-    margin-right: 300px;
-    text-align: center;
 
 }

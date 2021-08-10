@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+    
     <link rel="stylesheet" href="styles.css"/>
     <title>Weather App</title>
 </head>
@@ -17,34 +17,32 @@
     <div class="wrapper">
   <div class="container">
       <main>
-      <h1>Crawley, UK      </h1>
+      <h1 id="city">Crawley, UK      </h1>
       <ul>
-          <li>
+          <li id='time'>
               Tuesday 14:00
           </li>
           <li>
-              <h6>Sunny</h6>
+              <h6 id="weather-description">Sunny</h6>
           </li>
       </ul>
     <div class="aside-left">
-        <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" alt="weather icon">
-        <h5>20°C | °F</h5>
+        <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" alt="weather icon"/>
+        <strong id ='temp'>20</strong>
+        <small>°C | <a href=''>°F</a></small>
     </div>
     <div class="aside-right">
     <ul>
         <li>
-        <h6>Humidity: 65%</h6>
+        <h6>Humidity: <span id='humidity'></span> % </h6>
     </li>
         <li>
-           <h6>Precipitation: 1%</h6> 
-        </li>
-        <li>
-            <h6>Wind:7 mph</h6>
+            Wind: <span id="wind"></span>mph</h6>
         </li>
     </ul>
-</main></div></div>
+</main></div>
 <h6 id="open-sourced-by">Open-source code by <a href='https://github.com/Laura-Johnston/vanilla-weather-app'>Laura Johnston</h6></a>
-    
+    </div>
     <script src="app.js"></script>
 </body>
 
