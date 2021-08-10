@@ -9,57 +9,40 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    <link rel="stylesheet" href="src/style.css" />
+    <link rel="stylesheet" href="style.css" />
     <title>Weather App</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="weather-app-wrapper">
-            <div class="weather-app">
-                <form id="search-form" class="mb-3">
-                    <div class="row">
-                        <div class="col-9">
-                            <input type="search" placeholder="Type a city.." class="form-control" id="city-input"
-                                autocomplete="off" />
-                        </div>
-                        <div class="col-3">
-                            <input type="submit" value="Search" class="btn btn-primary w-100" />
-                        </div>
-                    </div>
-                </form>
-                <div class="overview">
-                    <h1 id="city"></h1>
-                    <ul>
-                        <li>Last updated: <span id="date"></span></li>
-                        <li id="description"></li>
-                    </ul>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="clearfix weather-temperature">
-                            <img src="" alt="Clear" id="icon" class="float-left" />
-                            <div class="float-left">
-                                <strong id="temperature"></strong><span class="units"> °C</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <ul>
-                            <li>Humidity: <span id="humidity"></span>%</li>
-                            <li>Wind: <span id="wind"></span> m/h</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="weather-forecast" id="forecast"></div>
-            </div>
-            <small>
-                <a href="https://github.com/wecodeschool/vanilla-weather-app" target="_blank">Open-source code</a>
-                by Matt Delac
-            </small>
-        </div>
+  <div class="container">
+      <h1>Crawley, UK      </h1>
+      <ul>
+          <li>
+              Tuesday 14:00
+          </li>
+          <li>
+              <h6>Sunny</h6>
+          </li>
+      </ul>
+    <div class="aside-left">
+        <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" alt="weather icon">
+        <h5>20°C | °F</h5>
     </div>
-    <script src="src/app.js"></script>
+    <div class="aside-right">
+    <ul>
+        <li>
+        <h6>Humidity: 65%</h6>
+    </li>
+        <li>
+           <h6>Precipitation: 1%</h6> 
+        </li>
+        <li>
+            <h6>Wind:7 mph</h6>
+        </li>
+    </ul>
+ </div>
+<h6 class="open-sourced-by">Open-source code by <a href='https://github.com/Laura-Johnston/vanilla-weather-app'>Laura Johnston</h6></a>
+    <script src="app.js"></script>
 </body>
 
 </html>
