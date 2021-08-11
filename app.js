@@ -28,13 +28,15 @@ if (minutes < 10) {
 let header = document.querySelector("#time");
 header.innerHTML = `${currentDay}, ${hours}:${minutes}`;
 
+let city = 'crawley'
  let apiKey = "2b1f0fa7c28f6bcb8dbdce394c0c6b6d";
- let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${apiKey}&units=metric`;
+ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
- console.log(apiUrl);
+ 
  axios.get(apiUrl).then(displayTemp)
 
 function displayTemp(response){
+    console.log(response.data);
     console.log(response.data.main.temp);
     console.log(response.data.weather[0].description)
     console.log(response.data.main.humidity);
@@ -50,5 +52,28 @@ function displayTemp(response){
    let humidity = document.querySelector('#humidity');
    humidity.innerHTML = response.data.main.humidity;
    
+   let weatherIcon = document.querySelector('#icon');
+   weatherIcon.setAttribute('src', `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
+    weatherIcon.setAttribute('alt', response.data.weather[0].description);
 }
 
+function search(city){
+     let apiKey = "2b1f0fa7c28f6bcb8dbdce394c0c6b6d";
+ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+axios(apiUrl).then(displayTemp);
+ 
+}
+
+search('Crawley');
+
+function citySearch(event){
+    event.preventDefault();
+    let cityChoice = document.querySelector('#city-name');
+    console.log(cityChoice.value)
+    search(cityChoice.value);
+
+
+}
+
+let form = document.querySelector("#search-bar");
+form.addEventListener("submit", citySearch);

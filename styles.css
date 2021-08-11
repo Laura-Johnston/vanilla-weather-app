@@ -32,6 +32,10 @@ small{
     margin-top: -50px;
     font-size: 16px;
 }
+.temp{
+    font-size: 30px;
+
+}
 
 .aside-left strong{
  
@@ -53,8 +57,7 @@ small{
 .aside-right{
     margin-left: 300px;
     margin-top: -80px;
-height: fit-content;
-margin-bottom: 30px;
+    margin-bottom: 30px;
 
 
 }
