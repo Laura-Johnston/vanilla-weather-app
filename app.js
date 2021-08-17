@@ -47,9 +47,9 @@ function displayForecast(response) {
   let forecastResponse = response.data.daily;
   console.log(forecastResponse);
   let forecast = document.querySelector('#weather-forecast');
-  let forecastHTML = '';
-  let days =['Thur', 'Fri', 'Sat'];
-days.forEach(function(dayOfWeek, index) {
+  let forecastHTML = "";
+  let days =["Thur", "Fri", "Sat"];
+forecastResponse.forEach(function(dayOfWeek, index) {
   if(index < 6) {
   forecastHTML = forecastHTML + `
 
