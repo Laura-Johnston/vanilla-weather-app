@@ -87,3 +87,27 @@ img{
     color: blueviolet;
     text-decoration: none;
 }
+
+#day-of-week{
+    margin-bottom: -40px;
+    margin-top: 20px;
+}
+
+.weather-forecast {
+    margin-left: -270px;
+    line-height: 10px;
+    
+}
+
+.forecast-day-and-icon img{
+    margin-left: -35px;
+    margin-top: 80px;
+    margin-bottom: -20px;
+}
+
+
+.forecast-temps span{
+    margin-top: -10px;
+   
+    font-size: 12px;
+}

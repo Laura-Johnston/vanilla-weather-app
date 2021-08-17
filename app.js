@@ -24,9 +24,56 @@ if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 
-
 let header = document.querySelector("#time");
 header.innerHTML = `${currentDay}, ${hours}:${minutes}`;
+
+function formatDay(time){
+  let date = new Date(time * 1000);
+  let day = date.getDay();
+  let days = ['Sun','Mon','Tues','Wed','Thurs', 'Fri', 'Sat'];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecastResponse = response.data.daily;
+  console.log(forecastResponse);
+  let forecast = document.querySelector('#weather-forecast');
+let forecastHTML = '';
+let days =['Thur', 'Fri', 'Sat'];
+days.forEach(function(dayOfWeek, index) {
+  if(index < 6) {
+  forecastHTML = forecastHTML + `
+
+        <div class="forecast-day-and-icon">
+        <p id="day-of-week">${dayOfWeek.dt}</p>
+        <img src=
+        'https://openweathermap.org/img/wn/${dayOfWeek.weather[0].icon}@2x.png'
+        alt=""
+        width="50"
+        >
+        </div>
+    <div class="forecast-temps">
+        <span class="forecast-temp-max">
+            ${Math.round(dayOfWeek.temp.max)}°
+        </span> |
+        <span class="forecast-temp-min">
+            ${Math.round(dayOfWeek.temp.min)}°
+        </span>
+    </div>
+</div>`;
+forecast.innerHTML = forecastHTML;
+//console.log(forecastHTML)
+}
+;})
+}
+
+function getForecast(coords) {
+console.log(coords);
+let apiKey = "2b1f0fa7c28f6bcb8dbdce394c0c6b6d";
+let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(displayForecast);
+}
 
 let city = 'crawley'
  let apiKey = "2b1f0fa7c28f6bcb8dbdce394c0c6b6d";
@@ -38,7 +85,7 @@ let cTemp = null;
  axios.get(apiUrl).then(displayTemp)
 
 function displayTemp(response){
-    console.log(response.data);
+    //console.log(response.data);
     console.log(response.data.main.temp);
     console.log(response.data.weather[0].description)
     console.log(response.data.main.humidity);
@@ -57,7 +104,14 @@ function displayTemp(response){
    let weatherIcon = document.querySelector('#icon');
    weatherIcon.setAttribute('src', `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
     weatherIcon.setAttribute('alt', response.data.weather[0].description);
+
+    getForecast(response.data.coord);
 }
+
+
+  
+
+
 
 function search(city){
      let apiKey = "2b1f0fa7c28f6bcb8dbdce394c0c6b6d";
@@ -67,6 +121,7 @@ axios(apiUrl).then(displayTemp);
 }
 
 search('Crawley');
+displayForecast();
 
 function citySearch(event){
     event.preventDefault();
@@ -101,4 +156,3 @@ fahrenheitHref.addEventListener('click', changeToFarenheit);
 
 let celsiusHref = document.querySelector('#celsius-href');
 celsiusHref.addEventListener('click', changeToCelsius);
-
