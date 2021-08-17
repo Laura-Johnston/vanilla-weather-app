@@ -35,20 +35,28 @@ function formatDay(time){
   return days[day];
 }
 
+function getForecast(coords) {
+console.log(coords);
+let apiKey = "2b1f0fa7c28f6bcb8dbdce394c0c6b6d";
+let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(displayForecast);
+}
+
+
 function displayForecast(response) {
   let forecastResponse = response.data.daily;
   console.log(forecastResponse);
   let forecast = document.querySelector('#weather-forecast');
-let forecastHTML = '';
-let days =['Thur', 'Fri', 'Sat'];
+  let forecastHTML = '';
+  let days =['Thur', 'Fri', 'Sat'];
 days.forEach(function(dayOfWeek, index) {
   if(index < 6) {
   forecastHTML = forecastHTML + `
 
         <div class="forecast-day-and-icon">
-        <p id="day-of-week">${dayOfWeek.dt}</p>
+        <p id="day-of-week">${formatDay(dayOfWeek.dt)}</p>
         <img src=
-        'https://openweathermap.org/img/wn/${dayOfWeek.weather[0].icon}@2x.png'
+        'https://openweathermap.org/img/wn${dayOfWeek.weather[0].icon}2x.png'
         alt=""
         width="50"
         >
@@ -68,12 +76,6 @@ forecast.innerHTML = forecastHTML;
 ;})
 }
 
-function getForecast(coords) {
-console.log(coords);
-let apiKey = "2b1f0fa7c28f6bcb8dbdce394c0c6b6d";
-let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&&appid=${apiKey}&units=metric`;
-axios.get(apiUrl).then(displayForecast);
-}
 
 let city = 'crawley'
  let apiKey = "2b1f0fa7c28f6bcb8dbdce394c0c6b6d";
@@ -109,10 +111,6 @@ function displayTemp(response){
 }
 
 
-  
-
-
-
 function search(city){
      let apiKey = "2b1f0fa7c28f6bcb8dbdce394c0c6b6d";
  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -129,30 +127,7 @@ function citySearch(event){
     console.log(cityChoice.value)
     search(cityChoice.value);
 
-
 }
-
-function changeToFarenheit(event){
-    event.preventDefault();
-    celsiusHref.classList.remove('active');
-    fahrenheitHref.classList.add('active')
-    let fTemp = (cTemp * 9) /5 + 32;
-    let temp = document.querySelector('#temp');
-    temp.innerHTML = Math.round(fTemp);
-}
-function changeToCelsius(event){
-    event.preventDefault();
-    celsiusHref.classList.add('active');
-    fahrenheitHref.classList.remove('active')
-    let temperature = document.querySelector('#temp');
-    temperature.innerHTML = Math.round(cTemp);
-}
+  
 let form = document.querySelector("#search-bar");
 form.addEventListener("submit", citySearch);
-
-let fahrenheitHref = document.querySelector('#farenheit-href');
-fahrenheitHref.addEventListener('click', changeToFarenheit);
-
-
-let celsiusHref = document.querySelector('#celsius-href');
-celsiusHref.addEventListener('click', changeToCelsius);
