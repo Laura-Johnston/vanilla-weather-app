@@ -36,7 +36,7 @@ function formatDay(time){
 }
 
 function getForecast(coords) {
-console.log(coords);
+//console.log(coords);
 let apiKey = "2b1f0fa7c28f6bcb8dbdce394c0c6b6d";
 let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(displayForecast);
@@ -50,26 +50,27 @@ function displayForecast(response) {
   let forecastHTML = "";
   let days =["Thur", "Fri", "Sat"];
 forecastResponse.forEach(function(dayOfWeek, index) {
-  if(index < 6) {
-  forecastHTML = forecastHTML + `
+  if(index < 6 && index > 0) {
+  forecastHTML = forecastHTML + `<div class ="row">` + `
 
-        <div class="forecast-day-and-icon">
-        <p id="day-of-week">${formatDay(dayOfWeek.dt)}</p>
-        <img src=
-        'https://openweathermap.org/img/wn${dayOfWeek.weather[0].icon}2x.png'
+        
+        <div class="forecast-day-and-icon" id="five-day-forecast">
+        <div class ="flex-items">
+        <strong id="day-of-week" style ="font-size:15px;">${formatDay(dayOfWeek.dt)}</strong>
+          <img src=
+        'https://openweathermap.org/img/wn/${dayOfWeek.weather[0].icon}@2x.png'
         alt=""
-        width="50"
-        >
-        </div>
-    <div class="forecast-temps">
-        <span class="forecast-temp-max">
-            ${Math.round(dayOfWeek.temp.max)}°
-        </span> |
-        <span class="forecast-temp-min">
-            ${Math.round(dayOfWeek.temp.min)}°
-        </span>
-    </div>
-</div>`;
+        width="50">
+    <div class="forecast-temps" style="display:inline-flex;">
+        <span class="forecast-temp-max"><p style="font-size:15px;">
+            ${Math.round(dayOfWeek.temp.max)}°  |  
+        </p></span> 
+        <span class="forecast-temp-min"><p style="font-size:15px;">
+               ${Math.round(dayOfWeek.temp.min)}°
+        </p></span>
+      
+    </div></div></div>
+</div> </br>`
 forecast.innerHTML = forecastHTML;
 //console.log(forecastHTML)
 }
@@ -88,10 +89,10 @@ let cTemp = null;
 
 function displayTemp(response){
     //console.log(response.data);
-    console.log(response.data.main.temp);
-    console.log(response.data.weather[0].description)
-    console.log(response.data.main.humidity);
-    console.log(response.data.wind.speed);
+    //console.log(response.data.main.temp);
+    //console.log(response.data.weather[0].description)
+    //console.log(response.data.main.humidity);
+    //console.log(response.data.wind.speed);
     let city = document.querySelector('#city');
     city.innerHTML = response.data.name;
    let cityTemp = document.querySelector('#temp');
@@ -119,7 +120,7 @@ axios(apiUrl).then(displayTemp);
 }
 
 search('Crawley');
-displayForecast();
+
 
 function citySearch(event){
     event.preventDefault();

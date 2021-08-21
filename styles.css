@@ -4,14 +4,18 @@
     max-width:600px;
     border: 2px solid #dadee1;
     border-radius: 18px;
-    padding: 15px;
+    padding: 10px;
 
 }
 .wrapper{
     margin-left: 50px;
     height: 100%;    
     max-width:600px;
-    padding: 15px;
+    padding: 10px;
+
+}
+.five-day-forecast{
+    margin-top:-20px;
 
 }
 
@@ -21,6 +25,21 @@
 
 }
 
+#weather-forecast{
+    display: flex;
+    margin-top: 40px;
+    margin-right: -20px;
+}
+
+.flex-items{
+    flex-direction: row;
+    margin:0 20px;
+    ;
+
+    ;
+}
+
+
 li{
     color: #70757a;
     font-size: 16px;
@@ -28,7 +47,12 @@ li{
     list-style-type: none;
 }
 h1{
-    margin: 0;
+    
+    margin-top: 15px;
+    margin-left:10px;
+}
+h6, #time{
+margin-left: 10px;
 }
 
 ul{
