@@ -56,9 +56,9 @@ forecastResponse.forEach(function(dayOfWeek, index) {
         
         <div class="forecast-day-and-icon" id="five-day-forecast">
         <div class ="flex-items">
-        <strong id="day-of-week" style ="font-size:15px;">${formatDay(dayOfWeek.dt)}</strong>
+        <strong id="day-of-week" style ="font-size:15px;">`   `${formatDay(dayOfWeek.dt)}</strong>
           <img src=
-          'https://openweathermap.org/img/wn/${dayOfWeek.weather[0].icon}@2x.png'
+        'https://openweathermap.org/img/wn/${dayOfWeek.weather[0].icon}@2x.png'
         alt=""
         width="50">
     <div class="forecast-temps" style="display:inline-flex;">
